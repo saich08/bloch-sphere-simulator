@@ -46,12 +46,24 @@ var ToolboxEventsNamespace = {
     
     createCustomQuantumGateUsingRotations: function(x, y, z, rotation) {
         let customQuantumGate = QuantumGate.createQuantumGateUsingRotations(x, y, z, rotation);
-        ToolboxEventsNamespace.createCustomQuantumGate(customQuantumGate);
+        
+        if (err != null) {
+            alert(err);
+        }
+        else {
+            ToolboxEventsNamespace.createCustomQuantumGate(customQuantumGate);
+        }
     },
     
     createCustomQuantumGateUsingMatrix: function(a11, a12, a21, a22) {
-        let customQuantumGate = QuantumGate.createQuantumGateUsingMatrix(a11, a12, a21, a22);
-        ToolboxEventsNamespace.createCustomQuantumGate(customQuantumGate);
+        let customQuantumGate, err = QuantumGate.createQuantumGateUsingMatrix(a11, a12, a21, a22);
+
+        if (err != null) {
+            alert(err);
+        }
+        else {
+            ToolboxEventsNamespace.createCustomQuantumGate(customQuantumGate);
+        }
     },
     
     resetCustomQuantumGateModels: function() {

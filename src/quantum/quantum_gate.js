@@ -1,6 +1,10 @@
 import * as THREE from '../libs/three/three.module.js';
 
 import {
+    Matrix
+} from "../math/matrix.js";
+
+import {
     CartesianAxes
 } from "../geometry/composite_shapes.js";
 
@@ -29,22 +33,29 @@ class QuantumGate {
         return new QuantumGate(x, y, z, rotation, {
             "type": QuantumGate.USING_ROTATIONS,
             "title": title
-        });
+        }), null;
     }
 
     static createQuantumGateUsingMatrix(a11, a12, a21, a22) {
         let title = `[[${a11.toString()}, ${a12.toString()}], [${a21.toString()}, ${a22.toString()}]]`;
 
-        // todo: convert matrix to rotations
-        let x = 1;
-        let y = 0;
-        let z = 0;
-        let rotation = 180;
+        let logicGateMatrix = new Matrix([[a11, a12], [a21, a22]]);
 
-        return new QuantumGate(x, y, z, rotation, {
-            "type": QuantumGate.USING_MATRIX,
-            "title": title
-        });
+        if (logicGateMatrix.isUnitary()) {
+            // todo: convert matrix to rotations
+            let x = 1;
+            let y = 0;
+            let z = 0;
+            let rotation = 180;
+
+            return new QuantumGate(x, y, z, rotation, {
+                "type": QuantumGate.USING_MATRIX,
+                "title": title
+            }), null;
+        }
+        else {
+            return null, "Matrix is not unitary";
+        }
     }
 
     static createQuantumGateUsingJsonString(jsonString) {
