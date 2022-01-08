@@ -1,7 +1,7 @@
 import * as THREE from '../libs/three/three.module.js';
 
 import {
-    Matrix
+    Matrix2x2
 } from "../math/matrix.js";
 
 import {
@@ -39,7 +39,7 @@ class QuantumGate {
     static createQuantumGateUsingMatrix(a11, a12, a21, a22) {
         let title = `[[${a11.toString()}, ${a12.toString()}], [${a21.toString()}, ${a22.toString()}]]`;
 
-        let logicGateMatrix = new Matrix([[a11, a12], [a21, a22]]);
+        let logicGateMatrix = new Matrix2x2([[a11, a12], [a21, a22]]);
 
         if (logicGateMatrix.isUnitary()) {
             // todo: convert matrix to rotations

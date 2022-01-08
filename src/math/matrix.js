@@ -3,10 +3,8 @@ import {
 } from './complex.js';
 
 
-class Matrix {
+class Matrix2x2 {
     constructor(data) {
-        // set rows and columns to 2
-        // bloch sphere uses single qubit gates
         this.rows = 2;
         this.columns = 2;
 
@@ -44,7 +42,7 @@ class Matrix {
             };
         }
 
-        return new Matrix(this.columns, this.rows, data);
+        return new Matrix2x2(this.columns, this.rows, data);
     }
 
     inverse() {
@@ -56,5 +54,5 @@ class Matrix {
 }
 
 export {
-    Matrix
+    Matrix2x2
 }
