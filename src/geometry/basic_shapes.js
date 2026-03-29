@@ -50,7 +50,10 @@ class Cylinder extends BaseMesh {
         );
 
         let cylinderMaterial = new THREE.MeshPhongMaterial({
-            color: properties.color
+            color: properties.color,
+            shininess: 60,
+            specular: new THREE.Color(0x222222),
+            emissive: properties.emissive || new THREE.Color(0x000000)
         });
 
         super(cylinderGeometry, cylinderMaterial, properties);
@@ -89,7 +92,10 @@ class Sphere extends BaseMesh {
 
         let sphereMaterial = new THREE.MeshPhongMaterial({
             color: properties.color,
-            opacity: properties.opacity
+            opacity: properties.opacity,
+            shininess: 80,
+            specular: new THREE.Color(0x1a4a8a),
+            emissive: properties.emissive || new THREE.Color(0x000000)
         });
 
         sphereMaterial.transparent = true;

@@ -37,7 +37,8 @@ class BlochSphere extends BaseGroup {
             color: properties.color,
             opacity: properties.opacity,
             skeleton: true,
-            skeletonColor: new THREE.Color(0x808080)
+            skeletonColor: new THREE.Color(0x1e4a7a),
+            skeletonWidth: 1
         });
 
         // Add Sphere to BaseGroup
@@ -51,7 +52,7 @@ class BlochSphere extends BaseGroup {
 
         // Create StatePointer
         this.statePointer = new StatePointer(radius, 3, {
-            color: new THREE.Color(0xFFFFFF),
+            color: new THREE.Color(0xffcc44),
             position: new THREE.Vector3(0, radius / 2, 0)
         });
 
