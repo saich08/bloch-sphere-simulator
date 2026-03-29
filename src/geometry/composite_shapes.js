@@ -23,11 +23,13 @@ class Axis extends BaseGroup {
 
         this.head = new Cylinder(height * 0.1, 0, width * 3.0, {
             color: properties.color,
+            emissive: properties.emissive,
             position: new THREE.Vector3(0, (height / 2) - ((height * 0.1) / 2), 0)
         });
 
         this.shaft = new Cylinder(height * (1 - 0.1), width, width, {
             color: properties.color,
+            emissive: properties.emissive,
             position: new THREE.Vector3(0, -1 * height * (0.1 / 2), 0)
         });
 
@@ -40,14 +42,15 @@ class CartesianAxes extends BaseGroup {
     constructor(length, width, properties) {
         if (!properties) properties = {};
 
-        if (!properties.xAxisColor) properties.xAxisColor = new THREE.Color(0xFF0000);
-        if (!properties.yAxisColor) properties.yAxisColor = new THREE.Color(0x00FF00);
-        if (!properties.zAxisColor) properties.zAxisColor = new THREE.Color(0x0000FF);
+        if (!properties.xAxisColor) properties.xAxisColor = new THREE.Color(0xe05252);
+        if (!properties.yAxisColor) properties.yAxisColor = new THREE.Color(0x3ddc84);
+        if (!properties.zAxisColor) properties.zAxisColor = new THREE.Color(0x4a9eff);
 
         super(properties);
 
         this.xAxis = new Axis(length, width, {
             color: properties.xAxisColor,
+            emissive: new THREE.Color(0x3a0000),
             position: new THREE.Vector3(0, 0, length / 2),
             rotation: new THREE.Vector3(THREE.Math.degToRad(90), 0, 0)
         });
@@ -59,6 +62,7 @@ class CartesianAxes extends BaseGroup {
 
         this.yAxis = new Axis(length, width, {
             color: properties.yAxisColor,
+            emissive: new THREE.Color(0x003a15),
             position: new THREE.Vector3(length / 2, 0, 0),
             rotation: new THREE.Vector3(0, 0, -1 * THREE.Math.degToRad(90))
         });
@@ -70,6 +74,7 @@ class CartesianAxes extends BaseGroup {
 
         this.zAxis = new Axis(length, width, {
             color: properties.zAxisColor,
+            emissive: new THREE.Color(0x001a3a),
             position: new THREE.Vector3(0, length / 2, 0)
         });
 
@@ -122,11 +127,13 @@ class StatePointer extends BaseGroup {
 
         this.head = new Sphere(properties.pointerRadius, {
             color: properties.color,
+            emissive: properties.emissive,
             position: new THREE.Vector3(0, height / 2, 0)
         });
 
         this.shaft = new Cylinder(height, width, width, {
-            color: properties.color
+            color: properties.color,
+            emissive: properties.emissive
         });
 
         this.add(this.head);

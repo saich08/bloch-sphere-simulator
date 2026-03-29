@@ -139,14 +139,17 @@ var GlobalContext = {
         // add camera to scene
         GlobalContext.scene.add(GlobalContext.camera);
 
-        // init light and add to scene
-        GlobalContext.light = new THREE.DirectionalLight(0xFFFFFF);
+        // init lights and add to scene
+        GlobalContext.ambientLight = new THREE.AmbientLight(0x1a2a4a, 1.5);
+        GlobalContext.scene.add(GlobalContext.ambientLight);
+        GlobalContext.light = new THREE.DirectionalLight(0xffffff, 1.2);
         GlobalContext.camera.add(GlobalContext.light);
 
         // init renderer
-        GlobalContext.renderer = new THREE.WebGLRenderer();
+        GlobalContext.renderer = new THREE.WebGLRenderer({ antialias: true });
         GlobalContext.renderer.setSize(canvasWidth, canvasHeight);
         GlobalContext.renderer.setPixelRatio(window.devicePixelRatio);
+        GlobalContext.renderer.setClearColor(new THREE.Color(0x0d1117), 1);
 
         // init label renderer
         GlobalContext.labelRenderer = new CSS2DRenderer();
@@ -167,7 +170,8 @@ var GlobalContext = {
         GlobalContext.blochSphere = new BlochSphere(diameter / 2, {
             theta: GlobalContext.blochSphereStateProperties.theta,
             phi: GlobalContext.blochSphereStateProperties.phi,
-            color: new THREE.Color(0x808080),
+            color: new THREE.Color(0x0d2137),
+            opacity: 0.18,
             axesLength: (diameter / 2) + ((diameter / 2) * 0.2),
             axesWidth: 2
         });
