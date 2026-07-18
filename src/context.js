@@ -130,7 +130,7 @@ var GlobalContext = {
         GlobalContext.scene = new THREE.Scene();
 
         // init camera
-        GlobalContext.camera = new THREE.PerspectiveCamera(45, canvasWidth / canvasHeight, 0.1, diameter * 2);
+        GlobalContext.camera = new THREE.PerspectiveCamera(45, canvasWidth / canvasHeight, 0.1, diameter * 4);
 
         // set camera position
         GlobalContext.camera.position.set(diameter, diameter, diameter);
